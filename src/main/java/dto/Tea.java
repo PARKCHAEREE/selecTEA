@@ -13,7 +13,7 @@ public class Tea implements Serializable {
     private String packaging;   // t_packaging
     private long unitsInStock;  // t_unitsInStock
     private String filename;    // t_fileName
-    private int quantity;       // 장바구니용 (DB엔 없음)
+    private int quantity;       // 장바구니용 
 
     public Tea() { super(); }
 

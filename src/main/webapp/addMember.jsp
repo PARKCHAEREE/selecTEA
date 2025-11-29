@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <html>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
 <title>회원가입</title>
 <style>
     .bg-brown { background-color: #6f4e37; color: white; }
@@ -9,6 +9,12 @@
 </style>
 <script type="text/javascript">
     function checkForm() {
+    	
+    	if (!document.newMember.name.value) {
+    	    alert("성명을 입력하세요.");
+    	    document.newMember.name.focus();
+    	    return false;
+    	}
         if (!document.newMember.id.value) {
             alert("아이디를 입력하세요.");
             return false;

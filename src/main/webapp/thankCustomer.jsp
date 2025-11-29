@@ -20,7 +20,7 @@
 
         Cookie[] cookies = request.getCookies();
 
-        // 쿠키 정보 읽기 (화면에 보여주기 위함)
+ 
         if (cookies != null) {
             for (int i = 0; i < cookies.length; i++) {
                 Cookie thisCookie = cookies[i];
@@ -30,10 +30,10 @@
             }
         }
 
-        // ★ 중요: 주문이 완료되었으니 세션(장바구니) 삭제
+        
         session.removeAttribute("cartlist");
 
-        // ★ 중요: 쿠키(배송 정보)도 삭제 (유효시간을 0으로 설정해서 재전송)
+       
         if (cookies != null) {
             for (int i = 0; i < cookies.length; i++) {
                 Cookie thisCookie = cookies[i];
@@ -42,7 +42,7 @@
                     n.equals("Shipping_shippingDate") || n.equals("Shipping_country") || 
                     n.equals("Shipping_zipCode") || n.equals("Shipping_addressName")) {
                     
-                    thisCookie.setMaxAge(0); // 즉시 삭제
+                    thisCookie.setMaxAge(0);
                     thisCookie.setPath("/");
                     response.addCookie(thisCookie);
                 }

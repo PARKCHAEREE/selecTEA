@@ -12,19 +12,17 @@
 
     try {
         String sql = "SELECT * FROM member WHERE id = ? AND password = ?";
-        pstmt = conn.prepareStatement(sql); // 여기서 conn이 null이면 에러 발생
+        pstmt = conn.prepareStatement(sql); // conn이 null이면 에러 발생
         pstmt.setString(1, id);
         pstmt.setString(2, password);
         rs = pstmt.executeQuery();
 
         if (rs.next()) {
-            // 로그인 성공
             String name = rs.getString("name");
             session.setAttribute("sessionId", id);
             session.setAttribute("sessionName", name);
             response.sendRedirect("welcome.jsp");
         } else {
-            // 로그인 실패
             response.sendRedirect("login_failed.jsp");
         }
     } catch (SQLException ex) {

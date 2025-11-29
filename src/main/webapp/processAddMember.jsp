@@ -9,12 +9,11 @@
     String password = request.getParameter("password");
     String name = request.getParameter("name");
     String gender = request.getParameter("gender");
-    String birth = request.getParameter("birth"); // 폼에 없으면 null
-    String mail = request.getParameter("mail");   // 폼에 없으면 null
+    String birth = request.getParameter("birth"); 
+    String mail = request.getParameter("mail");   
     String phone = request.getParameter("phone");
-    String address = request.getParameter("address"); // 폼에 없으면 null
+    String address = request.getParameter("address");
 
-    // 가입일시
     java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy/MM/dd");
     String regist_day = formatter.format(new java.util.Date());
 
@@ -34,7 +33,7 @@
         
         pstmt.executeUpdate();
 
-        // 가입 성공 후 로그인 페이지로 이동
+
         response.sendRedirect("login.jsp");
 
     } catch (SQLException ex) {

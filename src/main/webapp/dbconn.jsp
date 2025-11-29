@@ -10,7 +10,7 @@
         String db_id = "root";  
         String db_pw = "1234";  
 
-        // 변경된 변수명으로 연결
+        
         conn = DriverManager.getConnection(db_url, db_id, db_pw);
         
     } catch(Exception e) {

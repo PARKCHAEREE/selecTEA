@@ -1,10 +1,9 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dto.Tea"%>
-<%@ page import="dao.TeaRepository"%>
 <html>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
 <title>장바구니</title>
 <style>
     .bg-brown { background-color: #6f4e37; color: white; }
@@ -56,7 +55,7 @@
                             cartList = new ArrayList<Tea>();
                         }
 
-                        // 리스트 반복 출력
+                        
                         for (int i = 0; i < cartList.size(); i++) { 
                             Tea tea = cartList.get(i);
                             int total = tea.getUnitPrice() * tea.getQuantity();

@@ -4,23 +4,21 @@
 <head>
 <title>Welcome to selecTEA</title>
 <style>
-    /* 차(Tea) 느낌이 나는 은은한 배경색 */
     body {
         background-color: #fdfbf7; 
         font-family: 'Arial', sans-serif;
     }
     
-    /* 점보트론(배너) 커스텀 스타일 */
     .jumbotron {
-        background-color: #6f4e37; /* 짙은 갈색 (홍차 색상) */
+        background-color: #6f4e37; 
         color: white;
         padding: 60px 0;
         margin-bottom: 30px;
-        border-radius: 0 0 20px 20px; /* 하단 모서리만 둥글게 */
+        border-radius: 0 0 20px 20px; 
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    /* 🔥 [핵심] 검은 화면(모달 백드롭) 강제 제거 코드 🔥 */
+    //모달 백드롭 제거 코드 추가
     .modal-backdrop {
         display: none !important;
         width: 0 !important;

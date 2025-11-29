@@ -4,7 +4,7 @@
 
 <html>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
 <title>상품 등록</title>
 <style>
     .bg-brown { background-color: #6f4e37; color: white; }
@@ -21,7 +21,7 @@
         var unitPrice = document.getElementById("unitPrice");
         var unitsInStock = document.getElementById("unitsInStock");
 
-        // 스크립트 메시지도 다국어 처리 가능 (변수에 담아서 사용)
+     // JS 경고창 메시지 다국어 변수 설정
         var msgId = "<fmt:message key='msg.teaId'/>";
         var msgName = "<fmt:message key='msg.name'/>";
         var msgPrice = "<fmt:message key='msg.price'/>";

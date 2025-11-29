@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-<%@ page import="java.sql.*"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dto.Tea"%>
+<%@ page import="dao.TeaRepository"%>
 <html>
 <head>
 <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
@@ -29,42 +31,36 @@
             <p class="lead">전 세계의 프리미엄 티를 만나보세요.</p>
         </div>
     </div>
-
-    <%@ include file="dbconn.jsp" %>
-
+    
     <div class="container py-5">
         <div class="row">
             <%
-                PreparedStatement pstmt = null;
-                ResultSet rs = null;
+                TeaRepository dao = TeaRepository.getInstance();
                 
-                // 1. 모든 차(Tea) 데이터를 가져오는 쿼리 작성
-                String sql = "SELECT * FROM tea";
-                pstmt = conn.prepareStatement(sql);
-                rs = pstmt.executeQuery();
+                ArrayList<Tea> listOfTeas = dao.getAllTeas();
                 
-                // 2. 데이터가 있는지 반복문으로 확인하며 카드 출력
-                while (rs.next()) {
+                for (int i = 0; i < listOfTeas.size(); i++) {
+                    Tea tea = listOfTeas.get(i);
             %>
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow-sm">
-                    <img src="./resources/images/<%=rs.getString("t_fileName")%>" class="card-img-top" alt="<%=rs.getString("t_name")%>">
+                    <img src="./resources/images/<%=tea.getFilename()%>" class="card-img-top" alt="<%=tea.getName()%>">
                     
                     <div class="card-body d-flex flex-column">
-                        <h4 class="card-title"><%=rs.getString("t_name")%></h4>
+                        <h4 class="card-title"><%=tea.getName()%></h4>
                         
-                        <p class="card-text text-muted text-truncate-multiline"><%=rs.getString("t_description")%></p>
+                        <p class="card-text text-muted text-truncate-multiline"><%=tea.getDescription()%></p>
                         
                         <div class="mb-3">
-                            <span class="badge bg-success"><%=rs.getString("t_country")%></span>
-                            <span class="badge bg-info text-dark"><%=rs.getString("t_category")%></span>
-                            <span class="badge bg-secondary"><%=rs.getString("t_packaging")%></span>
+                            <span class="badge bg-success"><%=tea.getCountry()%></span>
+                            <span class="badge bg-info text-dark"><%=tea.getCategory()%></span>
+                            <span class="badge bg-secondary"><%=tea.getPackaging()%></span>
                         </div>
                         
                         <div class="mt-auto">
-                            <h5 class="text-danger fw-bold"><%=rs.getString("t_unitPrice")%>원</h5>
+                            <h5 class="text-danger fw-bold"><%=tea.getUnitPrice()%>원</h5>
                             <div class="d-grid">
-                                <a href="./tea.jsp?id=<%=rs.getString("t_id")%>" class="btn btn-outline-secondary">
+                                <a href="./tea.jsp?id=<%=tea.getTeaId()%>" class="btn btn-outline-secondary">
                                     상세 정보 &raquo;
                                 </a>
                             </div>
@@ -73,12 +69,7 @@
                 </div>
             </div>
             <% 
-                } // while문 끝
-                
-                // 3. 자원 해제 (깔끔하게!)
-                if (rs != null) rs.close();
-                if (pstmt != null) pstmt.close();
-                if (conn != null) conn.close();
+                } 
             %>
         </div> <hr>
     </div>

@@ -4,7 +4,6 @@
 <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
 <title>배송 정보 입력</title>
 <style>
-    /* selecTEA 테마 */
     .btn-brown { background-color: #6f4e37; color: white; border: none; }
     .btn-brown:hover { background-color: #5a3e2b; color: white; }
 </style>
