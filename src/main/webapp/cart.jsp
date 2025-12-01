@@ -13,6 +13,15 @@
 <body>
     <jsp:include page="menu.jsp" />
 
+    <%
+        int sum = 0;
+        ArrayList<Tea> cartList = (ArrayList<Tea>) session.getAttribute("cartlist");
+        
+        if (cartList == null) {
+            cartList = new ArrayList<Tea>();
+        }
+    %>
+
     <div class="jumbotron" style="background-color: #6f4e37; color: white; padding-top: 50px; padding-bottom: 50px; border-radius: 0;">
         <div class="container">
             <h1 class="display-3">장바구니</h1>
@@ -28,7 +37,15 @@
                         <a href="./deleteCart.jsp?cartId=<%=session.getId()%>" class="btn btn-danger">삭제하기</a>
                     </td>
                     <td align="right">
-                        <a href="./shippingInfo.jsp?cartId=<%=session.getId()%>" class="btn btn-success">주문하기</a>
+                        <% 
+                            boolean cartIsEmpty = (cartList == null || cartList.isEmpty());
+                            
+                            if (cartIsEmpty) { 
+                        %>
+                            <a href="#" class="btn btn-success disabled" onclick="alert('장바구니가 비어있습니다.'); return false;">주문하기</a>
+                        <% } else { %>
+                            <a href="./shippingInfo.jsp?cartId=<%=session.getId()%>" class="btn btn-success">주문하기</a>
+                        <% } %>
                     </td>
                 </tr>
             </table>
@@ -47,15 +64,6 @@
                 </thead>
                 <tbody>
                     <%
-                        int sum = 0;
-                        // 세션에서 장바구니 리스트 가져오기
-                        ArrayList<Tea> cartList = (ArrayList<Tea>) session.getAttribute("cartlist");
-                        
-                        if (cartList == null) {
-                            cartList = new ArrayList<Tea>();
-                        }
-
-                        
                         for (int i = 0; i < cartList.size(); i++) { 
                             Tea tea = cartList.get(i);
                             int total = tea.getUnitPrice() * tea.getQuantity();

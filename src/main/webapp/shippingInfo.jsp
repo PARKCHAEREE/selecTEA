@@ -22,14 +22,14 @@
         <form action="./processShippingInfo.jsp" class="form-horizontal" method="post">
             <input type="hidden" name="cartId" value="<%=request.getParameter("cartId")%>">
 
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-sm-2">성명</label>
                 <div class="col-sm-3">
                     <input name="name" type="text" class="form-control" placeholder="받으시는 분 성함" required>
                 </div>
             </div>
             
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-sm-2">배송일</label>
                 <div class="col-sm-3">
                     <input name="shippingDate" type="date" class="form-control" required>
@@ -37,21 +37,21 @@
                 <div class="col-sm-2 text-muted" style="padding-top:7px;">(yyyy/mm/dd)</div>
             </div>
             
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-sm-2">국가명</label>
                 <div class="col-sm-3">
                     <input name="country" type="text" class="form-control" value="Korea">
                 </div>
             </div>
             
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-sm-2">우편번호</label>
                 <div class="col-sm-3">
                     <input name="zipCode" type="text" class="form-control">
                 </div>
             </div>
             
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-sm-2">주소</label>
                 <div class="col-sm-5">
                     <input name="addressName" type="text" class="form-control" placeholder="상세 주소를 입력하세요">
